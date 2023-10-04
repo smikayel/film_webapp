@@ -30,11 +30,20 @@ export function Footer() {
         />
       </div>
       <div className="text-white leading-tight p-4">
-        <p>© Copyright 2023 HelloMovies. All Rights Reserved</p>
+        <p className="text-slate-200">
+          © Copyright 2023 HelloMovies. All Rights Reserved
+        </p>
       </div>
       <div className="flex justify-between gap-4">
         {socials.map((social) => {
-          return <img src={social.src} className="h-[25px]" alt={social.alt}/>;
+          return (
+            <img
+              src={social.src}
+              className="h-[25px]"
+              alt={social.alt}
+              key={social.src}
+            />
+          );
         })}
       </div>
     </footer>

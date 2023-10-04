@@ -1,13 +1,12 @@
-import React from "react";
-import { SearchBar } from "./components/search";
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
+import { Section } from "./components/featured/section";
+import { Footer } from "./components/featured/footer";
+import { Header } from "./components/featured/header";
 
 function App() {
   return (
     <div>
       <Header />
-      <SearchBar />
+      <Section />
       <Footer />
     </div>
   );
