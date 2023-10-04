@@ -1,7 +1,16 @@
 import React from "react";
+import { SearchBar } from "./components/search";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 
 function App() {
-  return <>Hello world</>;
+  return (
+    <div>
+      <Header />
+      <SearchBar />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
