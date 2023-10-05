@@ -1,6 +1,7 @@
 import { Chip } from "../../shared/chip/chip";
 import { SearchBar } from "../../shared/search";
 import { Title } from "../../shared/title";
+import { Card } from "../../shared/verticalCard";
 
 const chips = [
   {
@@ -12,6 +13,20 @@ const chips = [
     iconSrc: "/icons/tv.svg",
   },
 ];
+
+const mockFilm = {
+  id: 0,
+  title: "KING KONG",
+  image: "https://via.placeholder.com/224x332",
+  director: "string",
+  genres: "Action, Adventure, Drama",
+  duration: 187,
+  score: "",
+  rating: 7.62,
+  overview: "string",
+  year: 2005,
+  actors: "string",
+};
 
 export function Section() {
   return (
@@ -27,6 +42,7 @@ export function Section() {
           ))}
         </div>
       </div>
+      <Card film={mockFilm} />
     </div>
   );
 }
