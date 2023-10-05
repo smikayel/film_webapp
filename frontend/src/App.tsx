@@ -4,7 +4,7 @@ import { Header } from "./components/featured/header";
 
 function App() {
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <Header />
       <Section />
       <Footer />
