@@ -1,4 +1,5 @@
 import { Chip } from "../../shared/chip/chip";
+import { InlineCard } from "../../shared/inlineCard";
 import { SearchBar } from "../../shared/search";
 import { Title } from "../../shared/title";
 import { Card } from "../../shared/verticalCard";
@@ -31,6 +32,7 @@ const mockFilm = {
 export function Section() {
   return (
     <div className="flex-1 h-full bg-gray-950 ">
+      <InlineCard film={mockFilm} />
       <div className=" h-full flex flex-col items-center justify-center">
         <Title />
         <div className="px-8">
