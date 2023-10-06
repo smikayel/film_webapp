@@ -2,15 +2,15 @@ import { ICard } from "./card.interface";
 
 export function Card({ film }: ICard) {
   return (
-    <div className="Group10 w-56 h-96  ">
-      <div className="Group8 w-56 h-80 relative absolute">
+    <div className="w-56 h-96 p4">
+      <div className="w-56 h-80 relative absolute">
         <img
-          className="Bitmap w-56 h-80  rounded-2xl"
+          className="w-56 h-80  rounded-2xl"
           src={film.image}
           alt="movie url"
         />
-        <div className="Group9 w-11 h-6 left-0 top-[31px] absolute">
-          <div className="Rectangle w-11 h-6 left-0 top-0 absolute bg-gray-950 rounded-tr-lg rounded-br-lg" />
+        <div className="w-11 h-6 left-0 top-[31px] absolute">
+          <div className="w-11 h-6 left-0 top-0 absolute bg-gray-950 rounded-tr-lg rounded-br-lg" />
           <div className=" left-[8px] top-[4px] absolute text-slate-200 text-xs font-normal font-['Inter'] leading-none">
             {film.year}
           </div>

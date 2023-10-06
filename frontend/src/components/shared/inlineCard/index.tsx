@@ -2,11 +2,11 @@ import { ICard } from "../verticalCard/card.interface";
 
 export function InlineCard({ film }: ICard) {
   return (
-    <div className="bg-zinc-950 rounded-xl shadow-md overflow-hidden flex flex-row">
+    <div className="bg-zinc-950 rounded-xl shadow-md overflow-hidden flex flex-row px-4">
       <img className="w-28 h-40" src={film.image} alt="filmImage" />
       <div className="w-full h-40 flex flex-col justify-between">
         <div className="h-fit p-4  w-full text-slate-200 flex justify-between">
-          <div className="rounded-2xl bg-gray-950">
+          <div className="rounded-2xl bg-gray-900 p-1">
             <span>{film.year}</span>
           </div>
           <div className="w-fit flex justify-center gap-2 items-center text-slate-200 text-xs font-normal font-['Inter'] leading-none">
