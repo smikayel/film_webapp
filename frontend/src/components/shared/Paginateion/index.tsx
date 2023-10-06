@@ -7,97 +7,36 @@ import { ReactComponent as VerticalSvg } from "../../../assets/vertical-cards-ic
 import { Button } from "../button";
 import { Card } from "../verticalCard";
 import { InlineCard } from "../inlineCard";
+import filmServiceInstance from "../../../services/filmsService";
 
-const films = [
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-  {
-    id: 0,
-    title: "KING KONG",
-    image: "https://via.placeholder.com/224x332",
-    director: "string",
-    genres: "Action, Adventure, Drama",
-    duration: 187,
-    score: "",
-    rating: 7.62,
-    overview: "string",
-    year: 2005,
-    actors: "string",
-  },
-];
-
-export function Paginateion({ searchResult }: IPagination) {
+export function Paginateion({
+  searchResult,
+  setResultsState,
+  setFoundedResults,
+}: IPagination) {
   const [selectedLayout, setSelectedLayout] = useState("vertical");
+
+  const handleGetNextPage = async () => {
+    if (!searchResult.next) return;
+    const results = await filmServiceInstance.getPaginatedResult(
+      searchResult.next
+    );
+    setFoundedResults(results, setResultsState);
+  };
+
+  const handleGetBackPage = async () => {
+    if (!searchResult.previous) return;
+    const results = await filmServiceInstance.getPaginatedResult(
+      searchResult.previous
+    );
+    setFoundedResults(results, setResultsState);
+  };
 
   return (
     <div className="w-4/5 flex flex-col gap-8 text-slate-200">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-2">
-          Found{" "}
-          <div className="text-amber-400">{searchResult.founded + 500}</div>{" "}
+          Found <div className="text-amber-400">{searchResult.founded}</div>{" "}
           Movies
         </div>
         <div className="flex flex-row gap-2">
@@ -140,7 +79,7 @@ export function Paginateion({ searchResult }: IPagination) {
             : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
         }
       >
-        {films.map((film, index) =>
+        {searchResult.films.map((film, index) =>
           selectedLayout === "vertical" ? (
             <Card key={index} film={film} />
           ) : (
@@ -152,20 +91,19 @@ export function Paginateion({ searchResult }: IPagination) {
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-2">
           Showing {searchResult.from} to {searchResult.to} of{" "}
-          <div className="text-amber-400">{searchResult.founded + 500}</div>{" "}
-          results
+          <div className="text-amber-400">{searchResult.founded}</div> results
         </div>
         <div className="flex flex-row gap-4">
           <Button
             label="Previous"
             onClick={() => {
-              console.log("previous");
+              handleGetBackPage();
             }}
           />
           <Button
             label="Next"
             onClick={() => {
-              console.log("next");
+              handleGetNextPage();
             }}
           />
         </div>
