@@ -23,10 +23,11 @@ pip install -r requirements.txt
 ```commandline
 docker compose up
 ```
+(be sure that the venv activated... (it's new terminal you need to reactivate venv))
 7. Open new terminal in project directory and make migrations with command
 ```commandline
 python manage.py makemigrations
 python manage.py migrate
 ```
-(be sure that the venv activated... (it's new terminal you need to reactivate venv))
-8. Run the server with crons with command `python manage.py runserver`.
+8. Run the seeds  `python manage.py seed_data`.
+9. Run the server with crons with command `python manage.py runserver`.
