@@ -3,7 +3,6 @@ from django.core.management.base import BaseCommand
 from films.models import Films, Genre, Actor
 
 
-
 class Command(BaseCommand):
     help = 'Seed data for Films, Genre, and Actor models'
 
@@ -11,16 +10,14 @@ class Command(BaseCommand):
         genre_names = [genre.strip() for genre in data['Genre'].split(',')]
         genres = [Genre.objects.get_or_create(name=name)[0] for name in genre_names]
 
-
         actor_names = [actor.strip() for actor in data['Actors'].split(',')]
         actors = [Actor.objects.get_or_create(name=name)[0] for name in actor_names]
-
 
         film = Films.objects.create(
             title=data['Title'],
             image=data['Poster'],
             director=data['Director'],
-            duration=int(data['Runtime'].split()[0]),  # Extract duration in minutes
+            duration=int(data['Runtime'].split()[0]),
             score=float(data['imdbRating']),
             rating=data['Rated'],
             overview=data['Plot'],
